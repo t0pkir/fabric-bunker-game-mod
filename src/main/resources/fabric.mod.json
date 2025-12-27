@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "bunker",
+  "version": "${version}",
+  "name": "Bunker Game Mod",
+  "description": "Complete bunker survival mechanics with roles, voting, morale, and energy systems",
+  "authors": [
+    "ModCode-Forge"
+  ],
+  "contact": {
+    "homepage": "https://github.com/t0pkir/fabric-bunker-game-mod",
+    "sources": "https://github.com/t0pkir/fabric-bunker-game-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/bunker/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.bunker.BunkerMod"
+    ],
+    "client": [
+      "com.bunker.BunkerClientMod"
+    ]
+  },
+  "mixins": [
+    "bunker.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~=1.21.11",
+    "java": ">=21",
+    "fabric-api-base": ">=0.100.0+1.21"
+  }
+}
