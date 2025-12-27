@@ -1,0 +1,45 @@
+plugins {
+	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'maven-publish'
+	id 'java'
+}
+
+version = project.mod_version
+group = project.group
+
+repositories {
+	mavenCentral()
+	maven {
+        name = "Fabric"
+        url = "https://maven.fabricmc.net/"
+    }
+}
+
+dependencies {
+	minecraft "net.minecraft:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filteringCharset "UTF-8"
+
+	filtersMatchingPattern '**/fabric.mod.json'
+	expand("version": project.version)
+}
+
+def targetJavaVersion = 21
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release.set(targetJavaVersion)
+}
+
+java {
+    withSourcesJar()
+}
+
+java.sourceCompatibility = JavaVersion.VERSION_21
+java.targetCompatibility = JavaVersion.VERSION_21
